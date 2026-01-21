@@ -2,19 +2,24 @@ import 'dart:io';
 import 'dart:math';
 
 void main() {
-  String? text = stdin.readLineSync();
+  Random random = Random();
+  int angka = random.nextInt(100) + 1;
+  int percobaan = 0;
 
-  print("Masukkan tebakan angka antara 1-100: ");
+  while (true) {
+    stdout.write("give me a number (1-100): ");
+    int tebakan = int.parse(stdin.readLineSync()!);
+    percobaan++;
 
-  Random rand = Random();
-  int index = rand.nextInt(100)+1;
-  print("jawaban benar: $index");
-  if (text != null) {
-    int guess = int.parse(text);
-    if (guess == index) {
-      print("correct. $index is the number");
+    if (tebakan < angka) {
+      print("too small");
+    } else if (tebakan > angka) {
+      print("too big");
     } else {
-      print("incorrect");
+      print("correct!");
+      break;
     }
   }
+
+  print("Jumlah percobaan: $percobaan");
 }
